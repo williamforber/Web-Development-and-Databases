@@ -1,0 +1,42 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+
+    {% block container %}
+    <div class="Box">
+        <div class="Message">
+            {{message}}
+        </div>
+        <div class="Login">
+            <h2 id="SignInHeading">Sign in:</h2>
+            <form method="POST" action="/ProcessLogin">
+                <div class="col-5">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" placeholder="Email adress" name="email" required>
+                </div>
+                <br>
+                <div class="col-5">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                </div>
+                <br>
+                <div class="ErrorMessage">
+                    {{errormessage}}
+                </div>
+                <input type="submit" class="btn btn-primary" value="Login">
+            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h2 id="altColour"> Don't have an account create one here: </h2>
+            <div class="SignUp">
+                <a href="/Login/SignUp"> <button type="button" class="btn btn-light" name="formButton">Sign up
+                    </button></a>
+            </div>
+            </br>
+            </br>
+            </br>
+            </br>
+        </div>
+    </div>
+    {% endblock %}

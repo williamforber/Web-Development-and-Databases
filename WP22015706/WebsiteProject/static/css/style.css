@@ -1,0 +1,179 @@
+/*Author: William Forber, Student id:22015706*/
+/* CSS Allowing for a responsive web design, and better contrast*/
+header {
+    /* Giving the header a solid border */
+    border: solid;
+    background-color: red;
+    /* Fixing the headers position to the top of the page */
+    position: fixed;
+    width: 100%;
+    /* Setting the minimum height to 2% */
+    min-height: 2%;
+}
+
+header img {
+    /* setting the horizon travels logo to be a height of 60px so it fits onto the header*/
+    height: 60px;
+    margin: 0;
+}
+
+/* setting the navbar colour to red with a solid border */
+.navbar {
+    background-color: red;
+    border: solid;
+}
+
+/* making the width of the horizon travels logo 160px wide */
+.htLogo {
+    width: 160px;
+}
+
+body {
+    /* Setting the background image */
+    background-image: url('/static/images/Horizon.jpg');
+    background-repeat: no-repeat, repeat;
+    /* Setting the background image to cover the webpage */
+    background-size: cover;
+    position: relative;
+    margin-right: 0px;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    background-color: gray;
+}
+
+/* setting disabled text inputs text to not be blurred out */
+#info:disabled {
+    background: white;
+    color: black;
+}
+
+/* setting the desired size and spacing of buttons */
+button {
+    border-radius: 10px;
+    padding: 0.3%;
+}
+
+/* defining a box class with a transparent grey background where text will be written inside */
+.Box {
+    border: solid;
+    border-color: #48494a;
+    background-color: rgba(72, 73, 74, 0.7);
+    box-shadow: 10px 10px 5px black;
+    color: white;
+    box-sizing: content-box;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* defining the footer with a red background colour and a solid border */
+footer {
+    background-color: red;
+    border: solid;
+    border-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.6rem;
+    font-size: 110%;
+    color: azure;
+}
+
+.Side {
+    box-sizing: content-box;
+    float: right;
+    margin-top: 0;
+    width: 50%;
+}
+
+/* class which is used for giving tables a shadow */
+.CustomTable {
+    box-shadow: 10px 10px 5px black;
+}
+
+.TravelForm {
+    text-align: center;
+}
+
+.radio {
+    margin-left: 4%;
+    margin-right: 4%;
+    display: inline-block;
+}
+
+
+.container {
+    width: 100%;
+}
+
+/* defining classes where text is scaled to either 90% for small text or x-large for large text */
+.Message {
+    font-size: x-large;
+}
+
+.MessageSm {
+    font-size: 90%;
+}
+
+/* defining the errormessage colour being red with a font size of x-large */
+.ErrorMessage {
+    color: red;
+    font-size: x-large;
+}
+
+.Code {
+    width: 256px;
+    height: auto;
+}
+
+/* class used for aligning text to the center */
+.Center {
+    text-align: center;
+}
+
+/* media queries used to dynamically size buttons and other elements based on the screen size of the user */
+
+@media only screen and (max-width:1200px) {
+    #headerButton {
+        width: 100%;
+        margin-bottom: 2%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+
+    .Box {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .Code {
+        width: 256px;
+        height: auto;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .container {
+        margin-top: 8.2cm;
+        margin-bottom: 50%;
+    }
+
+    header {
+        position: absolute;
+        box-sizing: border-box;
+        padding-top: 2.2%;
+        padding-left: 1%;
+        padding-right: 1%;
+        padding-bottom: 2.2%;
+    }
+
+    [class*="col-"] {
+        width: 100%;
+    }
+
+}

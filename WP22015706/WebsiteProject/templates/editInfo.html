@@ -1,0 +1,74 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+    {% block container %}
+    {% if info == "name" %}
+    <div class="Box">
+        <div class="Message">
+            Please enter your new user name:
+        </div>
+        <form action="/processEdit" method="POST">
+            <input type="hidden" name="infoToChange" value="name">
+            <input type="text" class="form-control" name="user1" placeholder="User name" required>
+            <br>
+            <div class="Message">
+                Please Re-type your new user name:
+            </div>
+            <input type="text" class="form-control" name="user2" placeholder="Re-type user name" required>
+            <br>
+            <div class="ErrorMessage Center">
+                {{errormessage}}
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary" id="Submit" value="Confirm">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    {% if info == "email" %}
+    <div class="Box">
+        <div class="Message">
+            Please enter your new email address:
+        </div>
+        <form action="/processEdit" method="POST">
+            <input type="hidden" name="infoToChange" value="email">
+            <input type="email" class="form-control" name="email1" placeholder="Email address" required>
+            <br>
+            <div class="Message">
+                Please Re-type your new email address:
+            </div>
+            <input type="email" class="form-control" name="email2" placeholder="Re-type email address" required>
+            <br>
+            <div class="ErrorMessage Center">
+                {{errormessage}}
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary" id="Submit" value="Confirm">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+    {% if info == "pass" %}
+    <div class="Box">
+        <div class="Message">
+            Please enter your new password:
+        </div>
+        <form action="/processEdit" method="POST">
+            <input type="hidden" name="infoToChange" value="pass">
+            <input type="password" class="form-control" name="pass1" placeholder="Password" required>
+            <br>
+            <div class="Message">
+                Please Re-type your new password:
+            </div>
+            <input type="password" class="form-control" name="pass2" placeholder="Re-type password" required>
+            <br>
+            <div class="ErrorMessage Center">
+                {{errormessage}}
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary" id="Submit" value="Confirm">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    {% endblock %}

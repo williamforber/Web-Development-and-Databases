@@ -1,0 +1,32 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+    {% block container %}
+
+
+    <div class="Box">
+        <div class="Message Center">
+            <p>Here is the time table valid Mondays to Saturdays for your information
+                about the possible journeys you can book with us.
+            </p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark CustomTable">
+                <tr>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Time to leave</th>
+                    <th scope="col">Time to arrive</th>
+                </tr>
+
+                {% for rows in timetable %}
+                <tr>
+                    <td>{{rows[1]}}</td>
+                    <td>{{rows[2]}}</td>
+                    <td>{{rows[3]}}</td>
+                    <td>{{rows[4]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endblock %}
