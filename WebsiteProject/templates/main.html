@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<! Author: William Forber, Student id: 22015706>
+    <html>
+
+    <head>
+        {% block head %}
+        <! defining the title and stylesheets required for a custom style with bootstrap>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename = 'css/style.css')}}">
+            <link rel="icon" href="{{url_for('static',filename = 'images/LogoBrowser.png')}}">
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+                crossorigin="anonymous"></script>
+
+            <script src="{{url_for('static',filename='scripts/timeValidation.js')}}"></script>
+            <script src="{{url_for('static',filename='scripts/dateValidation.js')}}"></script>
+            <script src="{{url_for('static',filename='scripts/genQrCode.js')}}"></script>
+
+            <! using custom library QRCode.js for generating qr codes>
+                <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+                <title>
+                    Horizon Travels
+                </title>
+                {% endblock %}
+    </head>
+
+    <body>
+        {% block nav %}
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img class="htLogo"
+                        src="{{url_for('static',filename = 'images/Logo.png')}}" alt="Horizon Travels logo"
+                        title="Home"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        {% if not(session.userId) %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Login"><button type="button" class="btn btn-light"
+                                    id="headerButton">Login / Signup</button></a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Help"><button type="button" class="btn btn-light"
+                                    id="headerButton">Help</button></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/displayTimeTable"><button type="button" class="btn btn-light"
+                                    id="headerButton">Show time table</button></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/AboutUs"><button type="button" class="btn btn-light"
+                                    id="headerButton">About us</button></a>
+                        </li>
+                        {% if session.userId %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Logout"><button type="button" class="btn btn-light"
+                                    id="headerButton">Logout
+                                </button></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Bookings"><button type="button" class="btn btn-light"
+                                    id="headerButton">Bookings</button></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Account"><button type="button" class="btn btn-light"
+                                    id="headerButton">Account</button></a>
+                        </li>
+                        {% endif %}
+
+                        {% if session.isAdmin == 1 %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/AdminCommands"><button type="button" class="btn btn-light"
+                                    id="headerButton">Admin Commands
+                                </button></a>
+                        </li>
+                        {% endif %}
+                        {% endblock %}
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+
+        <br>
+        <div class="container">
+            {% block container %}
+            {% endblock %}
+        </div>
+
+        {% block other %}
+        {% endblock %}
+
+        <! the footer for the web page displaying a link for the privacy policy and displaying the author>
+            <footer>
+                {% block footer %}
+                <a href="/PrivacyPolicy"> Privacy policy </a>
+                </br>
+                Author: William Forber, Student id: 22015706
+                {% endblock %}
+            </footer>
+
+    </body>
+
+    </html>

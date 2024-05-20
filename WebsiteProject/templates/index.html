@@ -1,0 +1,80 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+    {% block container %}
+    <!defining a dynamically sized parapgraph styled in external css>
+        <div class="Box">
+            <noscript>
+                <div class="ErrorMessage Center">
+                    <p>
+                        You do not have java script enabled, so expect limited functionallity,
+                        to enable java script go into your browsers security settings
+                    </p>
+                </div>
+            </noscript>
+            <div class="Message Center">
+                <! The home page parapgraph>
+                    <p>
+                        Welcome to Horizon Travels!
+                        To begin your journey,
+                        enter your origin, and destination, travel experience, and the date of travel
+                        and simply click get prices.
+                    </p>
+            </div>
+            <br>
+            <! defining a class to set the text colour of the form to white for easier readablilty against the
+                background image>
+                <div class="formColour">
+                    <! inputs for the transport type using bootstrap rows and columns and centering them using
+                        bootstrap>
+                        <form class="TravelForm" action="/getPrices" method="post">
+                            <div class="row g-0 justify-content-center">
+                                <! inputs for the origin and destination also separated into rows and columns and are
+                                    centered for looks using bootstrap>
+                                    <div class="col-4">
+                                        <label for="origin">Origin:</label>
+                                        <input type="search" class="form-control" name="start" required id="origin">
+                                    </div>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <div class="col-4">
+                                        <label for="destination"> Destination:</label>
+                                        <input type="search" class="form-control" name="end" required id="destination">
+                                    </div>
+                            </div>
+                            <br>
+                            <div class="row g-0 justify-content-center">
+                                <div class="col-3">
+                                    <input class="form-check-input" type="radio" name="travelClass" id="economy"
+                                        value="0" checked required>
+                                    <label class="form-check-label" for="economy">Economy class</label>
+                                </div>
+                                <div class="col-3">
+                                    <input class="form-check-input" type="radio" name="travelClass" id="business"
+                                        value="1" required>
+                                    <label class="form-check-label" for="business">Business class</label>
+                                </div>
+                            </div>
+                            <br>
+                            <! Date of travel input also using bootstrap>
+                                <div class="row gx-0 justify-content-center">
+                                    <div class="col-4">
+                                        <label for="dateOfTravel">Date of travel:</label>
+                                        <div class="d-flex justify-content-center">
+                                            <input type="date" id="dateToLeave" min="" max=""
+                                                onclick="checkBookingDate()" required class=" form-control" name="date"
+                                                required>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ErrorMessage">
+                                    {{errormessage}}
+                                </div>
+                                <br>
+                                <! Submit button for the form>
+                                    <div class="d-flex justify-content-center">
+                                        <input type="submit" class="btn btn-primary" id="Submit" value="Get prices">
+                                    </div>
+                        </form>
+                </div>
+        </div>
+        {% endblock %}

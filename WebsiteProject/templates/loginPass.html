@@ -1,0 +1,52 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+
+    {% block container %}
+    <div class="Box">
+        <div class="Message">
+            <p>
+                To make a booking you need to log in first
+            </p>
+        </div>
+        <div class="Login">
+            <h2 id="SignInHeading">Sign in:</h2>
+            <form method="POST" action="/payment">
+                <input type="hidden" value="{{bookingInfo[0]}}" name="origin">
+                <input type="hidden" value="{{bookingInfo[1]}}" name="dest">
+                <input type="hidden" value="{{bookingInfo[2]}}" name="date">
+                <input type="hidden" value="{{bookingInfo[3]}}" name="timeToLeave">
+                <input type="hidden" value="{{bookingInfo[4]}}" name="timeToArrive">
+                <input type="hidden" value="{{bookingInfo[5]}}" name="price">
+                <input type="hidden" value="{{bookingInfo[6]}}" name="experience">
+                <div class="col-5">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email adress" id="email"
+                        required>
+                </div>
+                <br>
+                <div class="col-5">
+                    <label for="password">Password:</label>
+                    <input type="password" name="passwd" class="form-control" placeholder="Password" id="password"
+                        required>
+                </div>
+                <br>
+                <div class="ErrorMessage">
+                    {{errormsg}}
+                </div>
+                <input type="submit" class="btn btn-primary" value="Login">
+            </form>
+            </section>
+            <br>
+            <h2 id="altColour"> Don't have an account?</h2>
+            <div class="Message">
+                <p>Please go to the home page and click login / signup to create an account and try booking again</p>
+            </div>
+
+        </div>
+        </br>
+        </br>
+        </br>
+        </br>
+    </div>
+    </div>
+    {% endblock %}

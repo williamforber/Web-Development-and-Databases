@@ -1,0 +1,92 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+    {% block container %}
+    <div class="Box">
+        {% if error %}
+        <div class="Message Center">
+            <p>You have not made any bookings with us</p>
+        </div>
+
+        {% else %}
+        {% if deleting == True %}
+        <form method="POST" action="/cancelPrice">
+            <div class="Message Center">
+                <p>Please select a booking to cancel:</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark CustomTable">
+                    <tr>
+                        <th scope="col">Origin</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time to leave</th>
+                        <th scope="col">Time to arrive</th>
+                        <th scope="col">Select booking</th>
+                    </tr>
+                    {% for rows in bookings %}
+                    <tr>
+                        <td>{{rows[3]}}</td>
+                        <td>{{rows[4]}}</td>
+                        <td>{{rows[2]}}</td>
+                        <td>{{rows[5]}}</td>
+                        <td>{{rows[6]}}</td>
+                        <td>
+                            <center><input class="form-check-input" type="radio" name="select"
+                                    value="{{rows[0]}},{{rows[2]}}" required checked></center>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <br>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-danger" id="Submit" value="Delete booking">
+            </div>
+        </form>
+        {% else %}
+        <div class="Message Center">
+            <p>Here is a list of all bookings you have made with us:</p>
+        </div>
+        <div class="table-responsive">
+            {% for rows in bookings %}
+            <table class="table table-dark CustomTable">
+                <tr>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time to leave</th>
+                    <th scope="col">Time to arrive</th>
+                    <th scope="col">Select Booking</th>
+                </tr>
+                <tr>
+                    <td>{{rows[3]}}</td>
+                    <td>{{rows[4]}}</td>
+                    <td>{{rows[2]}}</td>
+                    <td>{{rows[5]}}</td>
+                    <td>{{rows[6]}}</td>
+                    <td>
+                        <form method="POST" action="/GenQrCode">
+                            <input type="hidden" name="booking"
+                                value="{{rows[3]}},{{rows[4]}},{{rows[2]}},{{rows[5]}},{{rows[0]}},{{rows[7]}},{{rows[8]}}">
+                            <input type="submit" class="btn btn-primary" value="View QR code">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            {% endfor %}
+
+            </form>
+            <br>
+
+
+
+        </div>
+        <div class="Message Center shiftColour">
+            <p>If you want to cancel a booking please click cancel bookings</p>
+            <a href="/DeleteBooking"><button type="button" class="btn btn-danger">Cancel bookings</button></a>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% endblock %}

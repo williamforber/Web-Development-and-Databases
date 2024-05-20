@@ -1,0 +1,62 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+    {% block container %}
+    <div class="Box">
+        <div class="Message Center">
+            {% if price > 0 %}
+            <p>
+                To cancel your booking please pay the cancellation fee of £{{price}}</p>
+            <p>
+                Please make sure you do not delete the wrong booking as it is impossible to retreive / refund it
+            </p>
+            <form action="/cancelSuccess" method="POST">
+                <input type="hidden" name="timeTableId" value="{{timeId}}">
+                <input type="hidden" name="dateOfTravel" value="{{date}}">
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-4">
+                        <label for="nameOnCard">Name on card:</label>
+                        <div class="d-flex justify-content-center">
+                            <input type="text" class="form-control" id="nameOnCard" required>
+                            <br>
+                        </div>
+                    </div>
+                    &nbsp; &nbsp; &nbsp;
+                    <div class="col-4">
+                        <label for="cardNumber">Card number:</label>
+                        <div class="d-flex justify-content-center">
+                            <input type="number" " class=" form-control" required id="cardNumber">
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-4">
+                        <label for="securityCode">Security code:</label>
+                        <input type="number" class="form-control" required id="securityCode">
+                    </div>
+                    &nbsp; &nbsp; &nbsp;
+                    <div class="col-4">
+                        <label for="expire">Expiration date:</label>
+                        <input type="date" class="form-control" required id="expire">
+                    </div>
+                </div>
+                <br>
+                <! Submit button for the form>
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" class="btn btn-danger" id="Submit" value="Pay cancellation fee">
+                    </div>
+            </form>
+            {% else %}
+            <p>Since you have chosen to cancel the booking more than 60 days in advance there is no cancellation fee</p>
+            <form action="/cancelSuccess" method="POST">
+                <input type="hidden" name="timeTableId" value="{{timeId}}">
+                <input type="hidden" name="dateOfTravel" value="{{date}}">
+                <! Submit button for the form>
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" class="btn btn-danger" id="Submit" value="Cancel booking">
+                    </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}

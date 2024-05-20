@@ -1,0 +1,43 @@
+<! Author: William Forber, Student id: 22015706>
+    {% extends "main.html" %}
+    {% block container %}
+    <div class="Message Box">
+        <div class="Message Center">
+            <p>Hello {{userInfo[0]}}, here is your account information please choose what you want to edit</p>
+        </div>
+        <br>
+        <form action="/editAccount" method="POST">
+
+            <input class="form-check-input" type="radio" id="name" value="name" name="info" required>&nbsp;<label
+                for="name">Name:</label>&nbsp;&nbsp;
+            <input type="text" id="info" class="form-control" value="{{userInfo[0]}}" disabled>&nbsp;&nbsp;
+            <br>
+            <br>
+            <input class="form-check-input" type="radio" id="email" value="email" name="info" required>&nbsp;<label
+                for="email">Email
+                address:</label>&nbsp;&nbsp; <input type="email" class="form-control" id="info" value="{{userInfo[1]}}"
+                disabled>&nbsp;&nbsp;
+            <br>
+            <br>
+            <input class="form-check-input" type="radio" id="password" value="pass" name="info" required>&nbsp;<label
+                for="password">Password:</label> <input type="password" class="form-control" id="info" value="********"
+                disabled>
+            &nbsp;&nbsp;
+            <br>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary" id="Submit" value="Edit information">
+            </div>
+        </form>
+
+        <div class="ErrorMessage Center">
+            {{errormessage}}
+        </div>
+        <br>
+        <div class="Message Center formColour">
+            <p>Click here to delete your account</p>
+            <a href="/DeleteAccount"><button type="button" class="btn btn-danger">Delete Account</button></a>
+
+        </div>
+        <br>
+    </div>
+    {% endblock %}
